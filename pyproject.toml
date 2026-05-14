@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "face-recognition-models-ng"
+version = "0.3.0"
+description = "Trained models for the face-recognition-ng library."
+readme = "README.rst"
+license = { text = "CC0-1.0" }
+authors = [
+    { name = "Adam Geitgey", email = "ageitgey@gmail.com" },
+]
+keywords = ["face_recognition", "dlib", "models"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+]
+requires-python = ">=3.9"
+# No runtime dependencies — this package ships only data files and
+# uses importlib.resources (stdlib) to locate them.
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/ageitgey/face_recognition_models"
+
+# Note: this package cannot be published to PyPI because the model files
+# (~128 MB total) exceed PyPI's 100 MB per-release limit.
+# Install directly from GitHub:
+#   pip install git+https://github.com/jucasansao/face_recognition_models.git
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["face_recognition_models*"]
+
+[tool.setuptools.package-data]
+face_recognition_models = ["models/*.dat"]

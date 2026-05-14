@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install package
+        run: |
+          pip install --upgrade pip
+          pip install .
+
+      - name: Verify model paths are resolvable
+        run: |
+          python - <<'EOF'
+          import face_recognition_models, os
+          paths = [
+              face_recognition_models.pose_predictor_model_location(),
+              face_recognition_models.pose_predictor_five_point_model_location(),
+              face_recognition_models.face_recognition_model_location(),
+              face_recognition_models.cnn_face_detector_model_location(),
+          ]
+          for p in paths:
+              assert os.path.isfile(p), f"Missing model file: {p}"
+              print(f"OK  {p}")
+          EOF
