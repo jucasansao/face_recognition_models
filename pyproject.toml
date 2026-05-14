@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "face-recognition-models-ng"
-version = "0.3.0"
+version = "0.0.1"
 description = "Trained models for the face-recognition-ng library."
 readme = "README.rst"
 license = { text = "CC0-1.0" }
@@ -31,16 +31,13 @@ requires-python = ">=3.9"
 dependencies = []
 
 [project.urls]
-Homepage = "https://github.com/ageitgey/face_recognition_models"
-
-# Note: this package cannot be published to PyPI because the model files
-# (~128 MB total) exceed PyPI's 100 MB per-release limit.
-# Install directly from GitHub:
-#   pip install git+https://github.com/jucasansao/face_recognition_models.git
+Homepage = "https://github.com/jucasansao/face_recognition_models"
 
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["face_recognition_models*"]
 
 [tool.setuptools.package-data]
+# .dat model files are excluded until PyPI size limit increase is approved.
+# See: https://github.com/pypi/support (size limit request)
 face_recognition_models = ["models/*.dat"]

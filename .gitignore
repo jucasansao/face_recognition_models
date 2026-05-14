@@ -63,3 +63,8 @@ target/
 .python-version
 
 .idea/
+
+# Model files — too large for PyPI (~128MB total).
+# Re-add once PyPI size limit increase is approved.
+# Original files available at: https://github.com/ageitgey/face_recognition_models
+*.dat
