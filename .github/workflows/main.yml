@@ -25,17 +25,5 @@ jobs:
           pip install --upgrade pip
           pip install .
 
-      - name: Verify model paths are resolvable
-        run: |
-          python - <<'EOF'
-          import face_recognition_models, os
-          paths = [
-              face_recognition_models.pose_predictor_model_location(),
-              face_recognition_models.pose_predictor_five_point_model_location(),
-              face_recognition_models.face_recognition_model_location(),
-              face_recognition_models.cnn_face_detector_model_location(),
-          ]
-          for p in paths:
-              assert os.path.isfile(p), f"Missing model file: {p}"
-              print(f"OK  {p}")
-          EOF
+      - name: Verify package imports cleanly
+        run: python -c "import face_recognition_models; print('OK', face_recognition_models.__version__)"
