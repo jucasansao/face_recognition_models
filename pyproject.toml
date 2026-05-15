@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "face-recognition-models-ng"
-version = "0.0.1"
+version = "0.0.2"
 description = "Trained models for the face-recognition-ng library."
 readme = "README.rst"
 license = { text = "CC0-1.0" }

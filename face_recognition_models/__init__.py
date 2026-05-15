@@ -3,7 +3,7 @@ from pathlib import Path
 
 __author__ = "Adam Geitgey"
 __email__ = "ageitgey@gmail.com"
-__version__ = "0.0.1"
+__version__ = "0.0.2"
 
 _models = files(__name__) / "models"
 
