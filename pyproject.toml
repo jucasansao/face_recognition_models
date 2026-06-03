@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "face-recognition-models-ng"
-version = "0.0.2"
+version = "0.1.0"
 description = "Trained models for the face-recognition-ng library."
 readme = "README.rst"
 license = { text = "CC0-1.0" }
@@ -41,6 +41,4 @@ where = ["."]
 include = ["face_recognition_models*"]
 
 [tool.setuptools.package-data]
-# .dat model files are excluded until PyPI size limit increase is approved.
-# See: https://github.com/pypi/support (size limit request)
 face_recognition_models = ["models/*.dat"]
